@@ -20,7 +20,7 @@ const EditarTarea = ({ setEditarTareasDiv, tareaActual, recargarTareas }) => {
     evento.preventDefault();
     try {
       const respuesta = await axios.put(
-        `http://localhost:4000/api/v1/editarTarea/${Valor._id}`,
+        `https://flowlist-backend.onrender.com/api/v1/editarTarea/${Valor._id}`,
         Valor,
         { withCredentials: true }
       );
@@ -44,7 +44,7 @@ const EditarTarea = ({ setEditarTareasDiv, tareaActual, recargarTareas }) => {
     if (window.confirm("¿Estás seguro de que quieres borrar esta tarea?")) {
       try {
         const respuesta = await axios.delete(
-          `http://localhost:4000/api/v1/eliminarTarea/${Valor._id}`,
+          `https://flowlist-backend.onrender.com/api/v1/eliminarTarea/${Valor._id}`,
           { withCredentials: true }
         );
 

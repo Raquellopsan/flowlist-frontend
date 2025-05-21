@@ -30,7 +30,7 @@ const Registro = () => {
     try {
       // Realizamos la petición POST al backend para registrar al usuario
       const respuesta = await axios.post(
-        "http://localhost:4000/api/v1/registro", // Endpoint de registro en el backend
+        "https://flowlist-backend.onrender.com/api/v1/registro", // Endpoint de registro en el backend
         Valor // Los datos a enviar: nombre de usuario, email y contraseña
       );
 
