@@ -29,16 +29,28 @@ const Dashboard = () => {
   // Función para cargar los detalles del usuario, incluidas las tareas
   const fetDetallesUsuario = async () => {
     try {
+      const token = localStorage.getItem("token"); // Obtenemos el token guardado
+      if (!token) {
+        throw new Error("No token found, please login");
+      }
+
       const respuesta = await axios.get(
         "https://flowlist-backend.onrender.com/api/v1/detallesUsuario",
-        { withCredentials: true } // Aseguramos que se envíen las cookies de sesión
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Mandamos el token aquí
+          },
+          // ya no hace falta withCredentials si no usas cookies
+        }
       );
+
       // Asignamos las tareas a sus respectivos estados
       setTareasSinComenzar(respuesta.data.tareas.sinComenzar || []);
       setTareasEnProceso(respuesta.data.tareas.enProceso || []);
       setTareasCompletadas(respuesta.data.tareas.completadas || []);
     } catch (error) {
-      console.error(error); // En caso de error, lo mostramos en la consola
+      console.error(error);
+      // Opcional: podrías redirigir al login si no hay token o si el token no es válido
     }
   };
 

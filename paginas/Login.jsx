@@ -27,27 +27,26 @@ const Login = () => {
   const login = async (evento) => {
     evento.preventDefault(); // Evita el comportamiento predeterminado del formulario
     try {
-      // Realizamos la petición POST al backend para hacer login
       const respuesta = await axios.post(
-        "https://flowlist-backend.onrender.com/api/v1/login", // Endpoint de login en el backend
-        Valor, // Los datos a enviar: email y contraseña
-        {
-          withCredentials: true, // Enviamos las cookies con la solicitud
-        }
+        "https://flowlist-backend.onrender.com/api/v1/login",
+        Valor
       );
 
-      console.log(respuesta.data);
+      const { token } = respuesta.data;
 
-      // Si el login es exitoso, almacenamos la información en localStorage
+      //  Guardamos el token JWT en localStorage
+      localStorage.setItem("token", token);
+
+      // (Opcional) Puedes seguir guardando esto si te sirve para condiciones en la UI
       localStorage.setItem("userLoggedIn", "yes");
 
-      // Redirigimos al dashboard
+      //  Redirigimos al dashboard
       navigate("/dashboard");
     } catch (error) {
       if (error.response && error.response.data) {
-        alert(error.response.data.error); // Mostramos el error que viene del servidor
+        alert(error.response.data.error);
       } else {
-        alert("Ha ocurrido un error inesperado. Intenta de nuevo."); // Mensaje general si no hay error específico
+        alert("Ha ocurrido un error inesperado. Intenta de nuevo.");
       }
     }
   };
