@@ -13,7 +13,12 @@ const Header = ({ setAñadirTareaDiv }) => {
       const respuesta = await axios.post(
         "https://flowlist-backend.onrender.com/api/v1/logout",
         {},
-        { withCredentials: true }
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true, // si tu backend usa cookies, sino puedes quitarlo
+        }
       );
 
       // Mostramos el mensaje de éxito del servidor
@@ -26,7 +31,7 @@ const Header = ({ setAñadirTareaDiv }) => {
       navigate("/login");
     } catch (error) {
       // Mostramos cualquier error en la consola si la solicitud falla
-      console.log(error);
+      // console.log(error);
     }
   };
 

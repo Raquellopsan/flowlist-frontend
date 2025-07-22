@@ -22,7 +22,12 @@ const EditarTarea = ({ setEditarTareasDiv, tareaActual, recargarTareas }) => {
       const respuesta = await axios.put(
         `https://flowlist-backend.onrender.com/api/v1/editarTarea/${Valor._id}`,
         Valor,
-        { withCredentials: true }
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true, // si tu backend usa cookies, si no, puedes quitarlo
+        }
       );
 
       if (respuesta.data.success) {
