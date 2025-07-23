@@ -9,7 +9,7 @@ const Login = () => {
   // Estado para almacenar los valores de email y contraseña
   const [Valor, setValor] = useState({
     email: "",
-    contraseña: "",
+    password: "",
   });
 
   // Función que maneja el cambio de valor en los inputs
@@ -83,8 +83,8 @@ const Login = () => {
               required // También obligatorio
               placeholder="contraseña"
               className="border rounded px-4 py-2 border-[#FA9F42] w-[100%] outline-none placeholder-[#A4A2A2] text-[#FFB468] focus:shadow-[0_0_10px_#FA9F42]"
-              name="contraseña" // Lo asociamos con el estado para la contraseña
-              value={Valor.contraseña} // El valor es el estado de contraseña
+              name="password" // Lo asociamos con el estado para la contraseña
+              value={Valor.password} // El valor es el estado de contraseña
               onChange={change} // Actualizamos el estado cuando cambia
               autoComplete="current-password" // Sugerimos autocompletar con la contraseña actual
             />

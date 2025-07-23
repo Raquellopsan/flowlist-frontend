@@ -10,7 +10,7 @@ const Registro = () => {
   const [Valor, setValor] = useState({
     nombreUsuario: "",
     email: "",
-    contraseña: "",
+    password: "",
   });
 
   // Función que maneja el cambio de valor en los inputs
@@ -87,8 +87,8 @@ const Registro = () => {
               required // Hacemos que sea obligatorio
               placeholder="contraseña"
               className="border rounded px-4 py-2 border-[#FA9F42] w-[100%] outline-none placeholder-[#A4A2A2] text-[#FFB468] focus:shadow-[0_0_10px_#FA9F42]"
-              name="contraseña" // Lo asociamos con el estado de contraseña
-              value={Valor.contraseña} // El valor es el estado de contraseña
+              name="password" // Lo asociamos con el estado de contraseña
+              value={Valor.password} // El valor es el estado de contraseña
               onChange={change} // Llamamos a la función change cuando cambia
               autoComplete="new-password" // Sugerimos autocompletar con la nueva contraseña
             />
