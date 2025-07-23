@@ -10,6 +10,7 @@ const Header = ({ setAñadirTareaDiv }) => {
   const logout = async () => {
     try {
       // Enviamos la solicitud POST al servidor para cerrar sesión
+      const token = localStorage.getItem("token");
       const respuesta = await axios.post(
         "https://flowlist-backend.onrender.com/api/v1/logout",
         {},

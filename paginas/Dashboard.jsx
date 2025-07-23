@@ -31,7 +31,7 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem("token"); // Obtenemos el token guardado
       if (!token) {
-        throw new Error("No token found, please login");
+        throw new Error("Por favor inicia sesión");
       }
 
       const respuesta = await axios.get(
