@@ -31,7 +31,7 @@ const Registro = () => {
       // Realizamos la petición POST al backend para registrar al usuario
       const token = localStorage.getItem("token");
       const respuesta = await axios.post(
-        "https://flowlist-backend.onrender.com/api/v1/logout",
+        "https://flowlist-backend.onrender.com/api/v1/registro",
         {},
         {
           headers: {
