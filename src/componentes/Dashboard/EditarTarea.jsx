@@ -50,7 +50,12 @@ const EditarTarea = ({ setEditarTareasDiv, tareaActual, recargarTareas }) => {
       try {
         const respuesta = await axios.delete(
           `https://flowlist-backend.onrender.com/api/v1/eliminarTarea/${Valor._id}`,
-          { withCredentials: true }
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, // Mandamos el token aquí
+            },
+            withCredentials: true,
+          }
         );
 
         // Verificamos si la respuesta contiene la clave 'success'

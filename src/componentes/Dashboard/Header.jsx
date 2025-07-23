@@ -17,7 +17,7 @@ const Header = ({ setAñadirTareaDiv }) => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-          withCredentials: true, // si tu backend usa cookies, sino puedes quitarlo
+          withCredentials: true,
         }
       );
 

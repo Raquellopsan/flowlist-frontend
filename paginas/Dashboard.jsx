@@ -40,7 +40,7 @@ const Dashboard = () => {
           headers: {
             Authorization: `Bearer ${token}`, // Mandamos el token aquí
           },
-          // ya no hace falta withCredentials si no usas cookies
+          withCredentials: true,
         }
       );
 

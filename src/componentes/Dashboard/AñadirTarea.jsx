@@ -26,8 +26,9 @@ const AñadirTarea = ({ setAñadirTareaDiv, recargarTareas }) => {
         Valor,
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Enviamos el token en el header
+            Authorization: `Bearer ${token}`, // Mandamos el token aquí
           },
+          withCredentials: true,
         }
       );
 
