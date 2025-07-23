@@ -21,6 +21,7 @@ const AñadirTarea = ({ setAñadirTareaDiv, recargarTareas }) => {
     evento.preventDefault(); // Prevenimos el comportamiento por defecto del formulario (recarga de la página)
     try {
       // Realizamos una petición POST al backend para añadir la tarea
+      const token = localStorage.getItem("token");
       const respuesta = await axios.post(
         "https://flowlist-backend.onrender.com/api/v1/anadirTarea",
         Valor,
