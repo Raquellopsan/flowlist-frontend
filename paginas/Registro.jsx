@@ -29,16 +29,9 @@ const Registro = () => {
     evento.preventDefault(); // Evita el comportamiento predeterminado del formulario
     try {
       // Realizamos la petición POST al backend para registrar al usuario
-      const token = localStorage.getItem("token");
       const respuesta = await axios.post(
         "https://flowlist-backend.onrender.com/api/v1/registro",
-        Valor,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          withCredentials: true,
-        }
+        Valor //  se envían los datos
       );
 
       // Si el registro es exitoso, mostramos un mensaje y redirigimos al login
