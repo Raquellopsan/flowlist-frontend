@@ -32,7 +32,7 @@ const Registro = () => {
       const token = localStorage.getItem("token");
       const respuesta = await axios.post(
         "https://flowlist-backend.onrender.com/api/v1/registro",
-        {},
+        Valor,
         {
           headers: {
             Authorization: `Bearer ${token}`,
