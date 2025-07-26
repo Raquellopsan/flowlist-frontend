@@ -95,15 +95,14 @@ const Login = () => {
             >
               Iniciar sesión
             </button>
-
-            <p className="text-center text-[#A4A2A2]">
-              {/* Si no tienes cuenta, puedes registrarte */}
-              ¿No tienes una cuenta?{" "}
-              <Link to={"/registro"} className="text-[#815BCE] font-semibold">
-                Registrarse
-              </Link>
-            </p>
           </form>
+          <p className="text-center text-[#A4A2A2]">
+            {/* Si no tienes cuenta, puedes registrarte */}
+            ¿No tienes una cuenta?{" "}
+            <Link to={"/registro"} className="text-[#815BCE] font-semibold">
+              Registrarse
+            </Link>
+          </p>
         </div>
       </div>
     </div>
