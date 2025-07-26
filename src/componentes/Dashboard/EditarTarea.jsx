@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const EditarTarea = ({ setEditarTareasDiv, tareaActual, recargarTareas }) => {
   // Aseguramos que el estado solo se inicializa si tareaActual tiene valor
