@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Registro from "../paginas/Registro";
 import "./App.css";
 import Login from "../paginas/Login";
@@ -28,7 +30,14 @@ const App = () => {
         {/* Ruta de redirección por defecto */}
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+      />
     </div>
   );
 };
