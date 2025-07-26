@@ -47,38 +47,36 @@ const EditarTarea = ({ setEditarTareasDiv, tareaActual, recargarTareas }) => {
     }
   };
   const eliminarTarea = async () => {
-    if (window.confirm("¿Estás seguro de que quieres borrar esta tarea?")) {
-      try {
-        const token = localStorage.getItem("token");
-        const respuesta = await axios.delete(
-          `https://flowlist-backend.onrender.com/api/v1/eliminarTarea/${Valor._id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`, // Mandamos el token aquí
-            },
-            withCredentials: true,
-          }
-        );
+    try {
+      const token = localStorage.getItem("token");
+      const respuesta = await axios.delete(
+        `https://flowlist-backend.onrender.com/api/v1/eliminarTarea/${Valor._id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Mandamos el token aquí
+          },
+          withCredentials: true,
+        }
+      );
 
-        // Verificamos si la respuesta contiene la clave 'success'
-        if (respuesta.data.success) {
-          toast.success("Tarea eliminada con éxito");
-          setEditarTareasDiv("hidden");
-          recargarTareas(); // Recargamos las tareas para que se actualicen
-        } else {
-          toast.warn("No se pudo eliminar la tarea");
-        }
-      } catch (error) {
-        if (error.response) {
-          // Error detallado desde el servidor
-          toast.error(error.response.data.error || "Error al eliminar tarea");
-        } else if (error.request) {
-          // No se recibió respuesta del servidor
-          toast.warn("No se recibió respuesta del servidor.");
-        } else {
-          // Otro tipo de error
-          toast.error("Error desconocido: " + error.message);
-        }
+      // Verificamos si la respuesta contiene la clave 'success'
+      if (respuesta.data.success) {
+        toast.success("Tarea eliminada con éxito");
+        setEditarTareasDiv("hidden");
+        recargarTareas(); // Recargamos las tareas para que se actualicen
+      } else {
+        toast.warn("No se pudo eliminar la tarea");
+      }
+    } catch (error) {
+      if (error.response) {
+        // Error detallado desde el servidor
+        toast.error(error.response.data.error || "Error al eliminar tarea");
+      } else if (error.request) {
+        // No se recibió respuesta del servidor
+        toast.warn("No se recibió respuesta del servidor.");
+      } else {
+        // Otro tipo de error
+        toast.error("Error desconocido: " + error.message);
       }
     }
   };
