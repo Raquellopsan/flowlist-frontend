@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AñadirTarea = ({ setAñadirTareaDiv, recargarTareas }) => {
   // Estado que almacena los valores de la tarea (título, descripción, prioridad, estado)
@@ -35,7 +36,7 @@ const AñadirTarea = ({ setAñadirTareaDiv, recargarTareas }) => {
 
       // Si la respuesta es exitosa, mostramos un mensaje y actualizamos el estado
       if (respuesta.data.success) {
-        alert(respuesta.data.success); // Alerta con el mensaje de éxito
+        toast.success(respuesta.data.success); // Alerta con el mensaje de éxito
 
         // Limpiamos los campos del formulario
         setValor({
@@ -54,11 +55,11 @@ const AñadirTarea = ({ setAñadirTareaDiv, recargarTareas }) => {
     } catch (error) {
       // Manejo de errores: si la respuesta tiene error o no llega, mostramos mensajes adecuados
       if (error.response) {
-        alert(error.response.data.error || "Error al añadir tarea");
+        toast.error(error.response.data.error || "Error al añadir tarea");
       } else if (error.request) {
-        alert("No se recibió respuesta del servidor.");
+        toast.warn("No se recibió respuesta del servidor.");
       } else {
-        alert("Error desconocido: " + error.message);
+        toast.error("Error desconocido: " + error.message);
       }
     }
   };

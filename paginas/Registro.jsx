@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Registro = () => {
   // Usamos useNavigate para redirigir al login después de registrarse
@@ -35,11 +36,11 @@ const Registro = () => {
       );
 
       // Si el registro es exitoso, mostramos un mensaje y redirigimos al login
-      alert(respuesta.data.success);
+      toast.success(respuesta.data.success);
       navigate("/login");
     } catch (error) {
       // Si hay un error, mostramos el mensaje de error
-      alert(error.response.data.error);
+      toast.error(error.response.data.error);
     }
   };
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Login = () => {
   // Usamos useNavigate para redirigir al dashboard después del login exitoso
@@ -20,7 +21,6 @@ const Login = () => {
 
   {
     /*console.log(Valor);*/
-    // Descomentar para ver el estado actual
   }
 
   // Función que maneja el envío del formulario (login)
@@ -44,9 +44,9 @@ const Login = () => {
       navigate("/dashboard");
     } catch (error) {
       if (error.response && error.response.data) {
-        alert(error.response.data.error);
+        toast.error(error.response.data.error);
       } else {
-        alert("Ha ocurrido un error inesperado. Intenta de nuevo.");
+        toast.warn("Ha ocurrido un error inesperado. Intenta de nuevo.");
       }
     }
   };

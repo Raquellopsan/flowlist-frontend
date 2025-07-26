@@ -32,17 +32,17 @@ const EditarTarea = ({ setEditarTareasDiv, tareaActual, recargarTareas }) => {
       );
 
       if (respuesta.data.success) {
-        alert(respuesta.data.success);
+        toast.success(respuesta.data.success);
         setEditarTareasDiv("hidden");
         recargarTareas();
       }
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.error || "Error al editar tarea");
+        toast.error(error.response.data.error || "Error al editar tarea");
       } else if (error.request) {
-        alert("No se recibió respuesta del servidor.");
+        toast.warn("No se recibió respuesta del servidor.");
       } else {
-        alert("Error desconocido: " + error.message);
+        toast.error("Error desconocido: " + error.message);
       }
     }
   };
@@ -62,22 +62,22 @@ const EditarTarea = ({ setEditarTareasDiv, tareaActual, recargarTareas }) => {
 
         // Verificamos si la respuesta contiene la clave 'success'
         if (respuesta.data.success) {
-          alert("Tarea eliminada con éxito");
+          toast.success("Tarea eliminada con éxito");
           setEditarTareasDiv("hidden");
           recargarTareas(); // Recargamos las tareas para que se actualicen
         } else {
-          alert("No se pudo eliminar la tarea");
+          toast.warn("No se pudo eliminar la tarea");
         }
       } catch (error) {
         if (error.response) {
           // Error detallado desde el servidor
-          alert(error.response.data.error || "Error al eliminar tarea");
+          toast.error(error.response.data.error || "Error al eliminar tarea");
         } else if (error.request) {
           // No se recibió respuesta del servidor
-          alert("No se recibió respuesta del servidor.");
+          toast.warn("No se recibió respuesta del servidor.");
         } else {
           // Otro tipo de error
-          alert("Error desconocido: " + error.message);
+          toast.error("Error desconocido: " + error.message);
         }
       }
     }

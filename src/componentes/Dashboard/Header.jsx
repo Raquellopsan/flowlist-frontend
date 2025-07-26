@@ -2,6 +2,7 @@ import React from "react";
 import { IoAddCircleOutline, IoLogOutOutline } from "react-icons/io5";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Header = ({ setAñadirTareaDiv }) => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const Header = ({ setAñadirTareaDiv }) => {
       );
 
       // Mostramos el mensaje de éxito del servidor
-      alert(respuesta.data.message);
+      toast.success(respuesta.data.message);
 
       // Limpiamos el localStorage para eliminar cualquier dato guardado del usuario
       localStorage.clear("userLoggedIn");
