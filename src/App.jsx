@@ -1,5 +1,5 @@
-import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 import Registro from "../paginas/Registro";
 import "./App.css";
@@ -7,33 +7,23 @@ import Login from "../paginas/Login";
 import Dashboard from "../paginas/Dashboard";
 
 const App = () => {
-  const userLoggedIn = localStorage.getItem("userLoggedIn") === "yes";
+  const navigate = useNavigate();
+
+  // Redirigir según la autenticación
+  useEffect(() => {
+    const userLoggedIn = localStorage.getItem("userLoggedIn");
+
+    if (userLoggedIn === "yes") {
+      navigate("/dashboard"); // Si está logueado, redirige al dashboard
+    } else {
+      navigate("/login"); // Si no está logueado, redirige al login
+    }
+  }, [navigate]); // Dependemos solo de navigate para evitar redirección infinita
 
   return (
     <div className="animated-bg h-screen w-full">
       <Routes>
-        <Route
-          path="/login"
-          element={userLoggedIn ? <Navigate to="/dashboard" /> : <Login />}
-        />
-        <Route
-          path="/registro"
-          element={userLoggedIn ? <Navigate to="/dashboard" /> : <Registro />}
-        />
-        <Route
-          path="/dashboard"
-          element={userLoggedIn ? <Dashboard /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/"
-          element={
-            userLoggedIn ? (
-              <Navigate to="/dashboard" />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
+        <Route path="/registro" element={<Registro />} />
       </Routes>
     </div>
   );
