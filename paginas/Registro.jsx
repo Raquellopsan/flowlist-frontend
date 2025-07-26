@@ -104,7 +104,7 @@ const Registro = () => {
             <p className="text-center text-[#A4A2A2]">
               {/* Si ya tienes cuenta, puedes iniciar sesión */}
               ¿Ya tienes una cuenta?{" "}
-              <Link to={"/Login"} className="text-[#815BCE] font-semibold">
+              <Link to={"/login"} className="text-[#815BCE] font-semibold">
                 Iniciar sesión
               </Link>
             </p>
