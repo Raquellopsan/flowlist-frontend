@@ -28,6 +28,14 @@ const App = () => {
         {/* Ruta de redirección por defecto */}
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+      />
     </div>
   );
 };
